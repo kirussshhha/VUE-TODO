@@ -3,6 +3,11 @@
   line-height: 28px;
   font-weight: 600;
   color: #7f4b136b;
+
+  &:hover{
+    transition: .2s;
+    color: #7f4b13ca;
+  }
 }
 
 @mixin center-content {

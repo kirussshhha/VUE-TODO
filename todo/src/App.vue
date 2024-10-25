@@ -11,7 +11,7 @@
                 <label for="task1" class="task-label">Task 1</label>
               </div>
               <div class="remove-task">
-                <button class="remove-task-btn">✕</button>
+                <button class="remove-task-btn">✖</button>
               </div>
             </li>
             <li class="task">
@@ -20,7 +20,7 @@
                 <label for="task2" class="task-label">Task 2</label>
               </div>
               <div class="remove-task">
-                <button class="remove-task-btn">✕</button>
+                <button class="remove-task-btn">✖</button>
               </div>
             </li>
             <li class="task">
@@ -29,7 +29,7 @@
                 <label for="task2" class="task-label">Task 2</label>
               </div>
               <div class="remove-task">
-                <button class="remove-task-btn">✕</button>
+                <button class="remove-task-btn">✖</button>
               </div>
             </li>
           </ul>

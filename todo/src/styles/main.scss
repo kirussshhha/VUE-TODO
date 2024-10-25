@@ -1,6 +1,7 @@
 @use 'fonts';
 @use 'mixins';
 @use 'variables';
+@use 'breakpoints';
 
 * {
   margin: 0;
@@ -11,27 +12,27 @@ body {
   background: linear-gradient(104.11deg, #ff7e5f 14.52%, #feb567 87.26%);
 }
 
-html,
-body,
-#app,
 .wrapper {
-  height: 100%;
-}
+  height: 100vh;
 
-.wrapper {
   @include mixins.center-content;
 
   .todo__container {
-    width: 540px;
-    height: 437px;
+    width: 33.75rem;
+    height: 27.31rem;
     font-family: 'Open Sans', sans-serif;
     background-color: variables.$taskMainColor;
-    box-shadow: 0px 8px 35px 5px #fe9262;
+    box-shadow: 0 0.5rem 2.19rem 0.31rem #fe9262;
     color: variables.$taskTextColor;
+
+    @include breakpoints.respond-to(sm) {
+      width: 20rem;
+      height: 25.94rem;
+    }
 
     .todo-header {
       @include mixins.center-content;
-      height: 50px;
+      height: 3.125rem;
       font-size: variables.$taskFontSize;
       line-height: variables.$taskLineHeight;
       font-weight: 600;
@@ -42,30 +43,45 @@ body,
     }
 
     .list__container {
-      width: 535px;
-      height: 337px;
+      width: 33.44rem;
+      height: 21.06rem;
       background-color: #fff4e9;
+
+      @include breakpoints.respond-to(sm) {
+        width: 19.69rem;
+        height: 19.69rem;
+      }
 
       .task-list {
         display: flex;
         flex-direction: column;
-        gap: 25px;
+        gap: 1.56rem;
         font-family: 'Inter', sans-serif;
-        padding: 30px;
+        padding: 1.88rem;
         list-style: none;
         color: variables.$taskTextColor;
+
+        @include breakpoints.respond-to(sm) {
+          padding: 1.56rem 0.63rem;
+          gap: 1.25rem;
+        }
 
         .task {
           @include mixins.center-content;
           justify-content: space-between;
-          width: 480px;
-          height: 50px;
-          border-radius: 10px;
+          width: 30rem;
+          height: 3.125rem;
+          border-radius: 0.63rem;
           background-color: #ffdfbe;
 
           &:hover {
             transition: 0.2s;
             background-color: #ffd5ab;
+          }
+
+          @include breakpoints.respond-to(sm) {
+            width: 18.44rem;
+            height: 3.125rem;
           }
 
           .task-inp {
@@ -76,7 +92,7 @@ body,
             display: flex;
             align-items: center;
             position: relative;
-            padding-left: 63px;
+            padding-left: 3.94rem;
             font-size: variables.$taskFontSize;
             line-height: variables.$taskLineHeight;
             font-weight: 400;
@@ -87,20 +103,24 @@ body,
               left: 0;
               content: '';
               display: inline-block;
-              margin-left: 20px;
-              width: 22px;
-              height: 22px;
+              margin-left: 1.25rem;
+              width: 1.38rem;
+              height: 1.38rem;
               position: absolute;
-              border-radius: 5px;
-              border: 2px solid #feb567;
+              border-radius: 0.31rem;
+              border: 0.13rem solid #feb567;
+            }
+
+            @include breakpoints.respond-to(sm) {
+              font-size: 1rem;
             }
           }
 
           .task-inp:checked + .task-label::before {
             @include mixins.center-content;
-            width: 22px;
-            height: 22px;
-            border-radius: 5px;
+            width: 1.38rem;
+            height: 1.38rem;
+            border-radius: 0.31rem;
             background-color: #feb567;
             content: '✓';
             color: white;
@@ -108,13 +128,13 @@ body,
           }
 
           .remove-task-btn {
-            width: 26px;
-            height: 26px;
+            width: 1.63rem;
+            height: 1.63rem;
             background: none;
-            border: 2px solid variables.$taskMainColor;
+            border: 0.13rem solid variables.$taskMainColor;
             color: variables.$taskMainColor;
-            border-radius: 5px;
-            margin-right: 20px;
+            border-radius: 0.31rem;
+            margin-right: 1.25rem;
 
             &:hover {
               transition: 0.2s;
@@ -130,12 +150,12 @@ body,
       }
 
       .add-task-btn {
-        width: 480px;
-        height: 50px;
-        border-radius: 10px;
+        width: 30rem;
+        height: 3.125rem;
+        border-radius: 0.63rem;
         background: none;
         background-color: #ffecd8;
-        border: 2px dashed variables.$taskMainColor;
+        border: 0.13rem dashed variables.$taskMainColor;
         font-family: inherit;
         font-size: variables.$taskFontSize;
         line-height: variables.$taskLineHeight;
@@ -146,41 +166,54 @@ body,
           transition: 0.2s;
           background-color: #fbe3c9;
         }
+
+        @include breakpoints.respond-to(sm) {
+          width: 18.44rem;
+          font-size: 1rem;
+        }
       }
     }
 
     .nav__wrapper {
       @include mixins.center-content;
-      height: 50px;
+      height: 3.125rem;
 
       .nav__container {
         @include mixins.center-content;
         justify-content: space-between;
-        width: 480px;
-        height: 34px;
-      }
+        width: 30rem;
+        height: 2.13rem;
 
-      .items-left {
-        @include mixins.nav-controls;
-      }
-
-      .btn-nav__container {
-        display: flex;
-        gap: 25px;
-
-        .nav-btn {
-          @include mixins.nav-controls;
-          font-family: inherit;
-          border: none;
-          background: none;
-          cursor: pointer;
+        @include breakpoints.respond-to(sm) {
+          width: 19.38rem;
         }
 
-        .all-nav-btn {
-          @extend .nav-btn;
-          border: 1px solid #c9955d;
-          border-radius: 10px;
-          padding: 3px 10px 3px 10px;
+        .items-left {
+          @include mixins.nav-controls;
+        }
+
+        .btn-nav__container {
+          display: flex;
+          gap: 1.56rem;
+
+          .nav-btn {
+            @include mixins.nav-controls;
+            font-family: inherit;
+            border: none;
+            background: none;
+            cursor: pointer;
+          }
+
+          .all-nav-btn {
+            @extend .nav-btn;
+            border: 0.06rem solid #c9955d;
+            border-radius: 0.63rem;
+            padding: 0.19rem 0.63rem;
+          }
+
+          @include breakpoints.respond-to(md) {
+            gap: 0.94rem;
+          }
         }
       }
     }
@@ -188,7 +221,11 @@ body,
 
   .list-img {
     position: fixed;
-    margin-left: 530px;
+    margin-left: 33.13rem;
     z-index: -1;
+
+    @include breakpoints.respond-to(sm) {
+      display: none;
+    }
   }
 }

@@ -14,7 +14,6 @@ body {
 
 .wrapper {
   height: 100vh;
-
   @include mixins.center-content;
 
   .todo__container {
@@ -31,11 +30,11 @@ body {
     }
 
     .todo-header {
-      @include mixins.center-content;
       height: 3.125rem;
       font-size: variables.$taskFontSize;
       line-height: variables.$taskLineHeight;
       font-weight: 600;
+      @include mixins.center-content;
     }
 
     .list__wrapper {
@@ -67,15 +66,15 @@ body {
         }
 
         .task {
-          @include mixins.center-content;
-          justify-content: space-between;
           width: 30rem;
           height: 3.125rem;
           border-radius: 0.63rem;
           background-color: #ffdfbe;
+          transition: 0.2s;
+          @include mixins.center-content;
+          justify-content: space-between;
 
           &:hover {
-            transition: 0.2s;
             background-color: #ffd5ab;
           }
 
@@ -100,13 +99,13 @@ body {
             transition: 0.1s;
 
             &::before {
-              left: 0;
               content: '';
+              left: 0;
               display: inline-block;
+              position: absolute;
               margin-left: 1.25rem;
               width: 1.38rem;
               height: 1.38rem;
-              position: absolute;
               border-radius: 0.31rem;
               border: 0.13rem solid #feb567;
             }
@@ -117,27 +116,27 @@ body {
           }
 
           .task-inp:checked + .task-label::before {
-            @include mixins.center-content;
             width: 1.38rem;
             height: 1.38rem;
             border-radius: 0.31rem;
             background-color: #feb567;
             content: '✓';
             color: white;
+            @include mixins.center-content;
             transition: 0.1s;
           }
 
           .remove-task-btn {
             width: 1.63rem;
             height: 1.63rem;
-            background: none;
             border: 0.13rem solid variables.$taskMainColor;
             color: variables.$taskMainColor;
             border-radius: 0.31rem;
             margin-right: 1.25rem;
+            background: none;
+            transition: 0.2s;
 
             &:hover {
-              transition: 0.2s;
               border-color: #fc8f1a;
               color: #fc8f1a;
             }
@@ -161,9 +160,9 @@ body {
         line-height: variables.$taskLineHeight;
         color: variables.$taskMainColor;
         cursor: pointer;
+        transition: 0.2s;
 
         &:hover {
-          transition: 0.2s;
           background-color: #fbe3c9;
         }
 
@@ -175,14 +174,14 @@ body {
     }
 
     .nav__wrapper {
-      @include mixins.center-content;
       height: 3.125rem;
+      @include mixins.center-content;
 
       .nav__container {
-        @include mixins.center-content;
-        justify-content: space-between;
         width: 30rem;
         height: 2.13rem;
+        @include mixins.center-content;
+        justify-content: space-between;
 
         @include breakpoints.respond-to(sm) {
           width: 19.38rem;
@@ -197,18 +196,18 @@ body {
           gap: 1.56rem;
 
           .nav-btn {
-            @include mixins.nav-controls;
             font-family: inherit;
             border: none;
             background: none;
             cursor: pointer;
+            @include mixins.nav-controls;
           }
 
           .all-nav-btn {
-            @extend .nav-btn;
             border: 0.06rem solid #c9955d;
             border-radius: 0.63rem;
             padding: 0.19rem 0.63rem;
+            @extend .nav-btn;
           }
 
           @include breakpoints.respond-to(md) {

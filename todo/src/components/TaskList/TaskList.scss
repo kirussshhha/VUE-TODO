@@ -1,0 +1,18 @@
+@use 'todo/src/styles/variables' as variables;
+@use 'todo/src/styles/breakpoints' as bp;
+@use 'todo/src/styles/mixins' as mixins;
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.56rem;
+  font-family: 'Inter', sans-serif;
+  padding: 1.88rem;
+  list-style: none;
+  color: variables.$taskTextColor;
+
+  @include bp.respond-to(sm) {
+    padding: 1.56rem 0.63rem;
+    gap: 1.25rem;
+  }
+}

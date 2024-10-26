@@ -1,0 +1,81 @@
+@use 'todo/src/styles/variables' as variables;
+@use 'todo/src/styles/breakpoints' as bp;
+@use 'todo/src/styles/mixins' as mixins;
+
+.task {
+  width: 30rem;
+  height: 3.125rem;
+  border-radius: 0.63rem;
+  background-color: #ffdfbe;
+  transition: 0.2s;
+  @include mixins.center-content;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: #ffd5ab;
+  }
+
+  @include bp.respond-to(sm) {
+    width: 18.44rem;
+    height: 3.125rem;
+  }
+
+  .task-inp {
+    display: none;
+  }
+
+  .task-label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 3.94rem;
+    font-size: variables.$taskFontSize;
+    line-height: variables.$taskLineHeight;
+    font-weight: 400;
+    cursor: pointer;
+    transition: 0.1s;
+
+    &::before {
+      content: '';
+      left: 0;
+      display: inline-block;
+      position: absolute;
+      margin-left: 1.25rem;
+      width: 1.38rem;
+      height: 1.38rem;
+      border-radius: 0.31rem;
+      border: 0.13rem solid #feb567;
+    }
+
+    @include bp.respond-to(sm) {
+      font-size: 1rem;
+    }
+  }
+
+  .task-inp:checked + .task-label::before {
+    width: 1.38rem;
+    height: 1.38rem;
+    border-radius: 0.31rem;
+    background-color: #feb567;
+    content: '✓';
+    color: white;
+    @include mixins.center-content;
+    transition: 0.1s;
+  }
+
+  .remove-task-btn {
+    width: 1.63rem;
+    height: 1.63rem;
+    border: 0.13rem solid variables.$taskMainColor;
+    color: variables.$taskMainColor;
+    border-radius: 0.31rem;
+    margin-right: 1.25rem;
+    background: none;
+    transition: 0.2s;
+
+    &:hover {
+      border-color: #fc8f1a;
+      color: #fc8f1a;
+    }
+  }
+}

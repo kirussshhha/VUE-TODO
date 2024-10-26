@@ -1,0 +1,47 @@
+@use 'todo/src/styles/variables' as variables;
+@use 'todo/src/styles/breakpoints' as bp;
+@use 'todo/src/styles/mixins' as mixins;
+
+.nav {
+  height: 3.125rem;
+  @include mixins.center-content;
+
+  .nav__container {
+    width: 30rem;
+    height: 2.13rem;
+    @include mixins.center-content;
+    justify-content: space-between;
+
+    @include bp.respond-to(sm) {
+      width: 19.38rem;
+    }
+
+    .items-left {
+      @include mixins.nav-controls;
+    }
+
+    .btn-nav__container {
+      display: flex;
+      gap: 1.56rem;
+
+      .nav-btn {
+        font-family: inherit;
+        border: none;
+        background: none;
+        cursor: pointer;
+        @include mixins.nav-controls;
+      }
+
+      .all-nav-btn {
+        border: 0.06rem solid #c9955d;
+        border-radius: 0.63rem;
+        padding: 0.19rem 0.63rem;
+        @extend .nav-btn;
+      }
+
+      @include bp.respond-to(md) {
+        gap: 0.94rem;
+      }
+    }
+  }
+}

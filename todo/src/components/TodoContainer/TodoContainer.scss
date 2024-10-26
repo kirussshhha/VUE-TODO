@@ -1,0 +1,69 @@
+@use 'todo/src/styles/variables' as variables;
+@use 'todo/src/styles/breakpoints' as bp;
+@use 'todo/src/styles/mixins' as mixins;
+
+.todo__container {
+  width: 33.75rem;
+  min-height: 27.31rem;
+  font-family: 'Open Sans', sans-serif;
+  background-color: variables.$taskMainColor;
+  box-shadow: 0 0.5rem 2.19rem 0.31rem #fe9262;
+  color: variables.$taskTextColor;
+
+  @include bp.respond-to(sm) {
+    width: 20rem;
+    min-height: 25.94rem;
+  }
+
+  .todo-header {
+    height: 3.125rem;
+    font-size: variables.$taskFontSize;
+    line-height: variables.$taskLineHeight;
+    font-weight: 600;
+    @include mixins.center-content;
+  }
+
+  .list__wrapper {
+    @include mixins.center-content;
+  }
+
+  .list__container {
+    width: 33.44rem;
+    min-height: 21.06rem;
+    background-color: #fff4e9;
+
+    @include bp.respond-to(sm) {
+      width: 19.69rem;
+      min-height: 19.69rem;
+    }
+
+    .add-task {
+      @include mixins.center-content;
+    }
+
+    .add-task-btn {
+      width: 30rem;
+      height: 3.125rem;
+      margin-bottom: 1.875rem;
+      border-radius: 0.63rem;
+      background: none;
+      background-color: #ffecd8;
+      border: 0.13rem dashed variables.$taskMainColor;
+      font-family: inherit;
+      font-size: variables.$taskFontSize;
+      line-height: variables.$taskLineHeight;
+      color: variables.$taskMainColor;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: #fbe3c9;
+      }
+
+      @include bp.respond-to(sm) {
+        width: 18.44rem;
+        font-size: 1rem;
+      }
+    }
+  }
+}

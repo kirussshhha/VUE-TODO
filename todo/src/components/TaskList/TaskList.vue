@@ -1,18 +1,24 @@
 <template>
   <ul class="task-list">
-    <TaskItem />
-    <TaskItem />
-    <TaskItem />
+    <TaskItem
+      v-for="task in tasks"
+      :key="task.id"
+      :task="task"
+    />
   </ul>
 </template>
 
 <script>
-import TaskItem from '../TaskItem/TaskItem.vue'
+import { mapState } from 'vuex';
+import TaskItem from '../TaskItem/TaskItem.vue';
 
 export default {
   components: {
     TaskItem,
   },
+  computed: {
+    ...mapState(['tasks']),
+  }
 }
 </script>
 

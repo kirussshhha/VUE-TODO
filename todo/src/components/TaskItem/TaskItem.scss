@@ -2,7 +2,7 @@
 @use 'todo/src/styles/breakpoints' as bp;
 @use 'todo/src/styles/mixins' as mixins;
 
-.task {
+.task-wrapper {
   width: 30rem;
   height: 3.125rem;
   border-radius: 0.63rem;
@@ -20,47 +20,58 @@
     height: 3.125rem;
   }
 
-  .task-inp {
-    display: none;
-  }
-
-  .task-label {
+  .checkbox-inp {
     display: flex;
     align-items: center;
-    position: relative;
-    padding-left: 3.94rem;
-    font-size: variables.$taskFontSize;
-    line-height: variables.$taskLineHeight;
-    font-weight: 400;
     cursor: pointer;
-    transition: 0.1s;
+    margin-left: 1.2rem;
 
     &::before {
       content: '';
-      left: 0;
-      display: inline-block;
-      position: absolute;
-      margin-left: 1.25rem;
-      width: 1.38rem;
-      height: 1.38rem;
+      width: 1.35rem;
+      height: 1.35rem;
       border-radius: 0.31rem;
-      border: 0.13rem solid #feb567;
+      display: block;
+      position: absolute;
+      border: 0.125rem solid #fcb467;
+      background: #ffdfbe;
+      transition: 0.2s;
+    }
+
+    &:checked::before {
+      background: #fcb467;
+      border-color: #fcb467;
+    }
+
+    &:checked::after {
+      content: '✔';
+      position: absolute;
+      padding-left: 0.4rem;
+      font-size: 1rem;
+      color: white;
+    }
+  }
+
+  .task {
+    display: flex;
+  }
+
+  .edit-title {
+    border: none;
+    background: none;
+    margin-left: 28px;
+    font-size: variables.$taskFontSize;
+    line-height: variables.$taskLineHeight;
+    font-weight: 400;
+    color: #7f4b13;
+
+    &:focus {
+      outline: none;
     }
 
     @include bp.respond-to(sm) {
       font-size: 1rem;
     }
-  }
-
-  .task-inp:checked + .task-label::before {
-    width: 1.38rem;
-    height: 1.38rem;
-    border-radius: 0.31rem;
-    background-color: #feb567;
-    content: '✓';
-    color: white;
-    @include mixins.center-content;
-    transition: 0.1s;
   }
 
   .remove-task-btn {

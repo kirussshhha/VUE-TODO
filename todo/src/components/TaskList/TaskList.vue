@@ -1,24 +1,23 @@
 <template>
-  <ul class="task-list">
-    <TaskItem
-      v-for="task in tasks"
-      :key="task.id"
-      :task="task"
-    />
+  <ul class="task-list" v-if="filteredTasks.length > 0">
+    <TaskItem v-for="task in filteredTasks" :key="task.id" :task="task" />
   </ul>
+  <div class="noFoundTasks" v-else>
+    <p class="noFoundTasks-title">Tasks no found</p>
+  </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import TaskItem from '../TaskItem/TaskItem.vue';
+import { mapGetters } from 'vuex'
+import TaskItem from '../TaskItem/TaskItem.vue'
 
 export default {
   components: {
     TaskItem,
   },
   computed: {
-    ...mapState(['tasks']),
-  }
+    ...mapGetters(['filteredTasks']),
+  },
 }
 </script>
 

@@ -16,3 +16,16 @@
     gap: 1.25rem;
   }
 }
+
+.noFoundTasks{
+  width: 250px;
+  height: 70px;
+  background-color: #fbe3c9;
+  border-radius: 8px;
+  margin: 90px auto;
+  @include mixins.center-content;
+
+  .noFoundTasks-title{
+    font-size: 20px;
+  }
+}

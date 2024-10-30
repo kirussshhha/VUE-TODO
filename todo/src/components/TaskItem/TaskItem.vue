@@ -1,23 +1,25 @@
 <template>
   <li class="task-wrapper">
     <div class="task">
-      <input 
-        type="checkbox" 
-        :id="`task-${task.id}`" 
-        class="checkbox-inp" 
+      <input
+        type="checkbox"
+        :id="`task-${task.id}`"
+        class="checkbox-inp"
+        :checked="task.isChecked"
+        @change="onUpdateTaskCheckbox($event.target.checked)"
       />
 
       <input
         type="text"
         class="edit-title"
         v-model="newTitle"
-        @blur="updateTaskTitle"
+        @blur="onUpdateTaskTitle"
         autofocus
         placeholder="Edit task"
       />
     </div>
     <div class="remove-task">
-      <button class="remove-task-btn">✖</button>
+      <button class="remove-task-btn" @click="onRemoveTask">✖</button>
     </div>
   </li>
 </template>
@@ -38,9 +40,15 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['submitTaskTitle']),
-    updateTaskTitle() {
-      this.submitTaskTitle({ id: this.task.id, title: this.newTitle })
+    ...mapActions(['updateTaskTitle', 'toggleTaskCheckbox', 'removeTask']),
+    onUpdateTaskTitle() {
+      this.updateTaskTitle({ id: this.task.id, title: this.newTitle });
+    },
+    onUpdateTaskCheckbox(isChecked) {
+      this.toggleTaskCheckbox({ id: this.task.id, isChecked });
+    },
+    onRemoveTask() {
+      this.removeTask(this.task.id);
     },
   },
 }

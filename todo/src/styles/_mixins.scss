@@ -6,11 +6,6 @@
   font-weight: 600;
   color: #7f4b136b;
 
-  &:hover {
-    transition: 0.2s;
-    color: #7f4b13ca;
-  }
-
   @include breakpoints.respond-to(sm) {
     font-size: 16px;
   }

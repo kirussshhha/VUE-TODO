@@ -30,6 +30,11 @@
         background: none;
         cursor: pointer;
         @include mixins.nav-controls;
+
+        &:hover {
+          transition: 0.2s;
+          color: #7f4b13ca;
+        }
       }
 
       .all-nav-btn {

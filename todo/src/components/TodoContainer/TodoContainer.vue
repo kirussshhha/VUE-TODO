@@ -26,8 +26,11 @@ export default {
     TaskList,
   },
   methods: {
-    ...mapActions(['addNewTask']),
+    ...mapActions(['addNewTask', 'loadTasksFromLocalStorage']),
   },
+  created(){
+    this.loadTasksFromLocalStorage();
+  }
 }
 </script>
 
